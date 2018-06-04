@@ -9,7 +9,7 @@ export interface StyledVNodeData extends VNodeData {
 
 export type Style = types.NestedCSSProperties;
 
-const updateStyle = (oldNode: VNode, newNode: VNode) => {
+const updateCSS = (oldNode: VNode, newNode: VNode) => {
 
   const data: StyledVNodeData = newNode.data as StyledVNodeData;
 
@@ -28,9 +28,9 @@ const updateStyle = (oldNode: VNode, newNode: VNode) => {
   }
 };
 
-export const styleModule = {
-  create: updateStyle,
-  update: updateStyle,
+export const cssModule = {
+  create: updateCSS,
+  update: updateCSS,
 } as Module;
 
-export default styleModule;
+export default cssModule;

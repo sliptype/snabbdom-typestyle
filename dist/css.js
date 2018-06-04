@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var typestyle_1 = require("typestyle");
-var updateStyle = function (oldNode, newNode) {
+var updateCSS = function (oldNode, newNode) {
     var data = newNode.data;
     if (data.css) {
         data.props = data.props || {};
@@ -14,8 +14,8 @@ var updateStyle = function (oldNode, newNode) {
         }
     }
 };
-exports.styleModule = {
-    create: updateStyle,
-    update: updateStyle,
+exports.cssModule = {
+    create: updateCSS,
+    update: updateCSS,
 };
-exports.default = exports.styleModule;
+exports.default = exports.cssModule;

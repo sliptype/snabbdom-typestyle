@@ -22,7 +22,7 @@ Pass the CSS module, along with the Props and Attributes modules, when initializ
   import AttrsModule from 'snabbdom/modules/attributes';
   import CssModule from 'snabbdom-typestyle';
 
-  const modules = [
+  const modules: Array<Module> = [
     PropsModules,
     AttrsModule,
     CssModule
