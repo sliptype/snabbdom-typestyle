@@ -13,7 +13,27 @@ npm install snabbdom-typestyle
 
 ## Usage
 
-Pass the CSS module, along with the Props and Attributes modules, when initializing snabbdom
+Simply pass `css` to your snabbdom virtual node!
+
+```js
+  import { Style } from 'snabbdom-typestyle';
+
+  function view() {
+
+      const buttonStyle: Style = {
+          color: 'blue'
+      };
+
+      return (
+          <button css={ buttonStyle }>
+              My Button
+          </button>
+      );
+  }
+```
+The css module is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and accepts the same arguments: Any number of `NestedCssProperties`
+
+Make sure to pass the CSS module, along with the Props and Attributes modules, when initializing snabbdom
 
 ```js
   import { init } from 'snabbdom';
@@ -37,26 +57,6 @@ OR, if you are using [Cycle.js](https://github.com/cyclejs/cyclejs) pass `module
     });
 ```
 
-Pass `css` to your snabbdom virtual node like so:
-
-```js
-  import { Style } from 'snabbdom-typestyle';
-
-  function view() {
-
-      const buttonStyle: Style = {
-          color: 'blue'
-      };
-
-      return (
-          <button css={ buttonStyle }>
-              My Button
-          </button>
-      );
-  }
-```
-The css module is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and accepts the same arguments: Any number of `NestedCssProperties`
-
 ## Serverside Rendering
 To use `snabbdom-typestyle` in a serverside rendered environment, initialize snabbdom with the `serverSideCssModule`
 
@@ -74,7 +74,7 @@ const modules = [
   serverSideCssModule
 ];
 
-  const patch = init(modules);
+const patch = init(modules);
 ```
 
 Then, when you are rendering your html, you can grab the styles via `collectStyles(node: VNode): String`
