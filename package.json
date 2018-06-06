@@ -27,6 +27,7 @@
   "homepage": "https://github.com/sklingler93/snabbdom-typestyle#readme",
   "dependencies": {
     "snabbdom": "^0.7.1",
+    "snabbdom-to-html": "^5.1.1",
     "typestyle": "^2.0.1"
   }
 }

@@ -3,7 +3,12 @@
     "target": "es5",
     "outDir": "dist",
     "declaration": true,
-    "strict": true
+    "strict": true,
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ]
   },
   "files": [
     "src/css.ts"
