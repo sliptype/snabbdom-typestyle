@@ -1,4 +1,7 @@
 # Snabbdom TypeStyle
+
+[![npm](https://img.shields.io/npm/v/snabbdom-typestyle.svg)](https://www.npmjs.com/package/snabbdom-typestyle)
+
 Use [TypeStyle](https://github.com/typestyle/typestyle) with [Snabbdom](https://github.com/snabbdom/snabbdom)!
 * All the power and benefits of TypeStyle
 * Classname mapping is handled internally
