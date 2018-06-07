@@ -84,7 +84,7 @@ h('style#styles', collectStyles(vtree));
 
 Then, on the client-side, pass a selector for the style element rendered by the server to `makeClientSideCssModule(styleElementSelector: string | undefined)`. 
 
-Doing this avoids duplicating the style element when the application is hydrated.
+Doing this avoids duplication of the style element when the application is hydrated.
 
 ```
 import PropsModule from 'snabbdom/modules/props';
