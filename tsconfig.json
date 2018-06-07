@@ -11,6 +11,6 @@
     ]
   },
   "files": [
-    "src/css.ts"
+    "src/snabbdom-typestyle.ts"
   ]
 }
