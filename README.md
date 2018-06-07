@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/snabbdom-typestyle.svg)](https://www.npmjs.com/package/snabbdom-typestyle)
 
-Maintainable, scalable, and elegant styling with [TypeStyle](https://github.com/typestyle/typestyle) + [Snabbdom](https://github.com/snabbdom/snabbdom)
+Maintainable, scalable, and elegant styling with [Snabbdom](https://github.com/snabbdom/snabbdom) + [TypeStyle](https://github.com/typestyle/typestyle)
 * All the power and benefits of [TypeStyle](https://github.com/typestyle/typestyle)
 * Internal handling of classname mapping
 * Server-side rendering support
