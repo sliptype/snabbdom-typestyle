@@ -2,8 +2,8 @@
   "name": "snabbdom-typestyle",
   "version": "1.0.2",
   "description": "Snabbdom module for TypeStyle",
-  "main": "dist/css.js",
-  "types": "dist/css.d.ts",
+  "main": "dist/snabbdom-typestyle.js",
+  "types": "dist/snabbdom-typestyle.d.ts",
   "scripts": {
     "build": "tsc"
   },

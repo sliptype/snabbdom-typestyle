@@ -20,3 +20,10 @@ export const updateVNode = (node: VNode, attributeAccessor: (attribute: string, 
     attributeAccessor('class', newClassName);
   }
 };
+
+export function* alternateFirstInvocation(first: () => any, subsequent: () => any) {
+  yield first();
+  while (true) {
+    yield subsequent();
+  }
+}

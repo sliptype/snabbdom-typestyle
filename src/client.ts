@@ -3,20 +3,32 @@ import { VNode } from 'snabbdom/vnode';
 import { setStylesTarget } from 'typestyle';
 import { StylesTarget } from 'typestyle/lib/internal/typestyle';
 
-import { updateVNode } from './utils';
+import { alternateFirstInvocation, updateVNode } from './utils';
 
-const updateDOM = (oldNode: VNode, newNode: VNode): void => {
+const removeServersideStyles = (styleElementSelector: string) => {
+  const previousStyleTarget = document.querySelector(styleElementSelector);
+
+  if (previousStyleTarget) {
+    previousStyleTarget.remove();
+  }
+};
+
+const makeDomUpdater = (styleElementSelector: string | undefined = undefined) => (oldNode: VNode, newNode: VNode): void => {
   if (newNode.elm) {
     const elm: Element = newNode.elm as Element;
     updateVNode(newNode, (name, value) => elm.setAttribute(name, value));
   }
+
+  if (typeof styleElementSelector !== 'undefined') {
+    removeServersideStyles(styleElementSelector);
+  }
 };
 
-export const makeClientSideCssModule = (styleElementSelector: string | undefined = undefined): Module => {
-  if (typeof styleElementSelector !== 'undefined') {
-    const target = document.querySelector(styleElementSelector) as StylesTarget;
-    setStylesTarget(target);
-  }
+export const makeModule = (styleElementSelector: string | undefined = undefined): Module => {
+
+  // Serverside styles are only removed the first time updateDOM is called
+  const domUpdater = alternateFirstInvocation(() => makeDomUpdater(styleElementSelector), () => makeDomUpdater());
+  const updateDOM = (oldNode: VNode, newNode: VNode) => domUpdater.next().value(oldNode, newNode);
 
   return {
     create: updateDOM,
@@ -24,6 +36,4 @@ export const makeClientSideCssModule = (styleElementSelector: string | undefined
   } as Module;
 };
 
-export const cssModule = makeClientSideCssModule();
-
-export default cssModule;
+export default makeModule();
