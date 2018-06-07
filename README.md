@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/snabbdom-typestyle.svg)](https://www.npmjs.com/package/snabbdom-typestyle)
 
 Maintainable, scalable, and elegant styling with [TypeStyle](https://github.com/typestyle/typestyle) + [Snabbdom](https://github.com/snabbdom/snabbdom)
-* All the power and benefits of TypeStyle
+* All the power and benefits of [TypeStyle](https://github.com/typestyle/typestyle)
 * Internal handling of classname mapping
 * Server-side rendering support
 
@@ -15,7 +15,7 @@ npm install snabbdom-typestyle
 
 ## Usage
 
-Simply pass `css` to your snabbdom virtual node!
+Simply pass `css` to your [Snabbdom](https://github.com/snabbdom/snabbdom) virtual node!
 
 ```js
   import { Style } from 'snabbdom-typestyle';
@@ -33,9 +33,9 @@ Simply pass `css` to your snabbdom virtual node!
       );
   }
 ```
-The css module is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and accepts the same arguments: Any number of `NestedCssProperties` (or `Style`, which is an alias provided by snabbdom-typestyle).
+The **CssModule** is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and accepts the same arguments: Any number of `NestedCssProperties` (or `Style`, which is an alias provided by [snabbdom-typestyle](https://github.com/sklingler93/snabbdom-typestyle)).
 
-Make sure to pass the CSS module, along with the Props and Attributes modules, when initializing snabbdom.
+Make sure to pass the **CssModule**, along with the **Props** and **Attributes** modules, when initializing [Snabbdom](https://github.com/snabbdom/snabbdom).
 
 ```js
   import { init } from 'snabbdom';
@@ -52,13 +52,13 @@ Make sure to pass the CSS module, along with the Props and Attributes modules, w
   const patch = init(modules);
 ```
 
-OR, if you are using [Cycle.js](https://github.com/cyclejs/cyclejs) pass `modules` in the options of `makeDOMdriver`.
+Or, if you are using [Cycle.js](https://github.com/cyclejs/cyclejs) pass `modules` in the options of `makeDOMdriver`.
 ```js
 run(main, { DOM: makeDOMDriver('#root', { modules }) });
 ```
 
 ## Server-side Rendering
-To use `snabbdom-typestyle` in a server-side rendered environment, initialize snabbdom with the `serverSideCssModule`.
+To use `snabbdom-typestyle` in a server-side rendered environment, initialize [Snabbdom](https://github.com/snabbdom/snabbdom) with the `serverSideCssModule`.
 
 ```js
 import { serverSideCssModule, collectStyles } from 'snabbdom-typestyle';
@@ -82,7 +82,9 @@ When you are rendering your html, you can grab the styles via `collectStyles(nod
 h('style#styles', collectStyles(vtree));
 ```
 
-Then, on the client-side, pass a selector for the style element rendered by the server to `makeClientSideCssModule(styleElementSelector: string | undefined)`. Doing this avoids duplicating the style element when the application is hydrated.
+Then, on the client-side, pass a selector for the style element rendered by the server to `makeClientSideCssModule(styleElementSelector: string | undefined)`. 
+
+Doing this avoids duplicating the style element when the application is hydrated.
 
 ```
 import PropsModule from 'snabbdom/modules/props';
