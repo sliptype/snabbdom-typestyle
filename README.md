@@ -1,7 +1,6 @@
 # Snabbdom TypeStyle
 
-[![npm](https://img.shields.io/npm/v/snabbdom-typestyle.svg)](https://www.npmjs.com/package/snabbdom-typestyle)
-
+[![npm](https://img.shields.io/npm/v/snabbdom-typestyle.svg)](https://www.npmjs.com/package/snabbdom-typestyle) ![CircleCI](https://img.shields.io/circleci/project/github/sklingler93/snabbdom-typestyle.svg) [![Code Climate](https://img.shields.io/codeclimate/maintainability/sklingler93/snabbdom-typestyle.svg)](https://codeclimate.com/github/sklingler93/snabbdom-typestyle) [![Code Climate](https://img.shields.io/codeclimate/coverage/sklingler93/snabbdom-typestyle.svg)](https://codeclimate.com/github/sklingler93/snabbdom-typestyle)  ![license](https://img.shields.io/github/license/sklingler93/snabbdom-typestyle.svg)
 Maintainable, scalable, and elegant styling with [Snabbdom](https://github.com/snabbdom/snabbdom) + [TypeStyle](https://github.com/typestyle/typestyle)
 * All the power and benefits of [TypeStyle](https://github.com/typestyle/typestyle)
 * Internal handling of classname mapping
