@@ -31,6 +31,6 @@ jobs:
           command: | 
             ./cc-test-reporter before-build
             npm run test
-            ./cc-test-reporter after-build --exit-code $EXIT_CODE
+            ./cc-test-reporter after-build --exit-code $?
 
       # publish to npm
