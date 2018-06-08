@@ -86,7 +86,7 @@ Then, on the client-side, pass a selector for the style element rendered by the 
 
 Doing this avoids duplication of the style element when the application is hydrated.
 
-```
+```js
 import PropsModule from 'snabbdom/modules/props';
 import AttrsModule from 'snabbdom/modules/attributes';
 import { makeClientSideCssModule } from 'snabbdom-typestyle';
