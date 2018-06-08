@@ -28,17 +28,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typestyle_1 = require("typestyle");
-exports.isVNode = function (vNode) {
-    return vNode.length === undefined;
+exports.makeClassName = function (oldClassName, newClassName) {
+    return (oldClassName + " " + newClassName).trim();
 };
 exports.updateVNode = function (node, attributeAccessor) {
     var data = node.data;
     if (data.css) {
         data.props = data.props || {};
-        var styleClass = typestyle_1.style(data.css);
-        var oldClassName = data.props.className || '';
-        var newClassName = (oldClassName + " " + styleClass).trim();
-        attributeAccessor('class', newClassName);
+        attributeAccessor('class', exports.makeClassName(data.props.className || '', typestyle_1.style(data.css)));
     }
 };
 function alternateFirstInvocation(first, subsequent) {

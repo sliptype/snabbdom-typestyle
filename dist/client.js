@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var utils_1 = require("./utils");
 var removeServersideStyles = function (styleElementSelector) {
-    console.log('querying');
     var previousStyleTarget = document.querySelector(styleElementSelector);
     if (previousStyleTarget) {
         previousStyleTarget.remove();
@@ -22,6 +21,7 @@ var makeDomUpdater = function (styleElementSelector) {
 };
 exports.makeModule = function (styleElementSelector) {
     if (styleElementSelector === void 0) { styleElementSelector = undefined; }
+    // Serverside styles are only removed the first time updateDOM is called
     var domUpdater = utils_1.alternateFirstInvocation(function () { return makeDomUpdater(styleElementSelector); }, function () { return makeDomUpdater(); });
     var updateDOM = function (oldNode, newNode) { return domUpdater.next().value(oldNode, newNode); };
     return {

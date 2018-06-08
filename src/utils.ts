@@ -3,8 +3,8 @@ import { style } from 'typestyle';
 
 import { StyledVNodeData } from './types';
 
-export const isVNode = (vNode: string | VNode): vNode is VNode => {
-  return (vNode as string).length === undefined;
+export const makeClassName = (oldClassName: string, newClassName: string): string => {
+  return `${oldClassName} ${newClassName}`.trim();
 };
 
 export const updateVNode = (node: VNode, attributeAccessor: (attribute: string, className: string) => void): void => {
@@ -12,12 +12,7 @@ export const updateVNode = (node: VNode, attributeAccessor: (attribute: string, 
 
   if (data.css) {
     data.props = data.props || {};
-
-    const styleClass = style(data.css);
-    const oldClassName = data.props.className || '';
-    const newClassName = `${oldClassName} ${styleClass}`.trim();
-
-    attributeAccessor('class', newClassName);
+    attributeAccessor('class', makeClassName(data.props.className || '', style(data.css)));
   }
 };
 

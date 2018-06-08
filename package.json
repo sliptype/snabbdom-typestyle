@@ -1,11 +1,12 @@
 {
   "name": "snabbdom-typestyle",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Snabbdom module for TypeStyle",
   "main": "dist/snabbdom-typestyle.js",
   "types": "dist/snabbdom-typestyle.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,29 @@
     "snabbdom": "^0.7.1",
     "snabbdom-to-html": "^5.1.1",
     "typestyle": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "jest": "^23.1.0",
+    "ts-jest": "^22.4.6",
+    "typescript": "^2.9.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

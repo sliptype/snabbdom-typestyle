@@ -11,13 +11,11 @@ exports.collectStyles = function (node) {
     return instance.getStyles();
 };
 var traverseVNode = function (node, instance) {
-    if (utils_1.isVNode(node)) {
-        var data = node.data;
-        if (data.css) {
-            instance.style(data.css);
-        }
-        if (node.children) {
-            node.children.forEach(function (child) { return traverseVNode(child, instance); });
-        }
+    var data = node.data;
+    if (data.css) {
+        instance.style(data.css);
+    }
+    if (node.children) {
+        node.children.forEach(function (child) { return traverseVNode(child, instance); });
     }
 };
