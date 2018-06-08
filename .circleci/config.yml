@@ -20,7 +20,17 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
         
-      - run: npm run test
+      - run: 
+          command: | 
+            ./cc-test-reporter before-build
+            npm run test
+            ./cc-test-reporter after-build --exit-code $EXIT_CODE
 
       # publish to npm
