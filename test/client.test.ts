@@ -1,6 +1,5 @@
 import * as typestyle from 'typestyle';
 import * as client from '../src/client';
-import * as utils from '../src/utils';
 import * as mocks from './mocks';
 
 describe('makeModule', () => {

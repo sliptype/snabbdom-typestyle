@@ -1,6 +1,4 @@
-import * as typestyle from 'typestyle';
 import * as utils from '../src/utils';
-import * as mocks from './mocks';
 
 describe('alternateFirstInvocation', () => {
 
