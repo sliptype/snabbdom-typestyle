@@ -1,11 +1,6 @@
-import { h } from 'snabbdom';
-import { VNode } from 'snabbdom/vnode';
-import { style } from 'typestyle';
 import * as client from '../src/client';
 import * as utils from '../src/utils';
 import * as mocks from './mocks';
-
-jest.mock('typestyle');
 
 describe('removeElement', () => {
 

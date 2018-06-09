@@ -41,6 +41,9 @@
     "collectCoverageFrom": [
       "src/**"
     ],
+    "coveragePathIgnorePatterns": [
+      "snabbdom-typestyle.ts"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",

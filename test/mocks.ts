@@ -23,3 +23,21 @@ export const vNodeWithElm = () => {
 
   return node;
 };
+
+export const vNodeWithChildren = (quantity) => {
+  const node = vNode();
+  node.children = [];
+
+  for (let i = 0; i < quantity; i++) {
+    node.children.push(vNode());
+  }
+
+  return node;
+};
+
+export const blankVNode = () => h('div');
+
+export const typestyleInstance = () => ({
+  getStyles: jest.fn(),
+  style: jest.fn()
+});

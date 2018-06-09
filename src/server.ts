@@ -14,7 +14,7 @@ export const collectStyles = (node: VNode): string => {
   return instance.getStyles();
 };
 
-const traverseVNode = (node: VNode, instance: TypeStyle) => {
+export const traverseVNode = (node: VNode, instance: TypeStyle) => {
   const data: StyledVNodeData = node.data as StyledVNodeData;
 
   if (data.css) {

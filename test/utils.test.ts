@@ -1,9 +1,6 @@
-import { VNode } from 'snabbdom/vnode';
-import { style } from 'typestyle';
+import * as typestyle from 'typestyle';
 import * as utils from '../src/utils';
 import * as mocks from './mocks';
-
-jest.mock('typestyle');
 
 describe('alternateFirstInvocation', () => {
 
@@ -22,7 +19,7 @@ describe('alternateFirstInvocation', () => {
 
   it('subsequently yields the invocation of the second argument ad infinitum', () => {
     const generator = utils.alternateFirstInvocation(() => 1, () => 2);
-    for (let i = 0; i < Math.random() * 100; i++) {
+    for (let i = 0; i < Math.floor(Math.random() * 100); i++) {
       generator.next();
     }
     const result = generator.next().value;
@@ -48,17 +45,18 @@ describe('updateVNode', () => {
   const attributeAccessor;
 
   beforeEach(() => {
+    typestyle.style = jest.fn();
     attributeAccessor = jest.fn();
     utils.makeClassName = jest.fn(() => 'className');
     utils.updateVNode(mocks.vNode(), attributeAccessor);
   });
 
   it('calls style with the vnode css', () => {
-    expect(style.mock.calls[0][0]).toEqual(mocks.css());
+    expect(typestyle.style.mock.calls[0][0]).toEqual(mocks.css());
   });
 
   it('calls makeClassName with old classname and new classname', () => {
-    const newClassName = style.mock.results[0].value;
+    const newClassName = typestyle.style.mock.results[0].value;
     expect(utils.makeClassName.mock.calls[0][0]).toBe(mocks.oldClassName());
     expect(utils.makeClassName.mock.calls[0][1]).toBe(newClassName);
   });
