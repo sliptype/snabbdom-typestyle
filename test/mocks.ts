@@ -2,14 +2,20 @@ import { h } from 'snabbdom';
 
 export const styleElementSelector = () => '#styles';
 
+export const oldClassName = () => 'oldClassName';
+
+export const hashedClassName = () => 'oldClassName f1mb383g';
+
+export const collectedStyles = () => '.f1jvcvsh{color:red}.f1mb383g{color:blue}';
+
 export const css = () => ({
   color: 'blue'
 });
 
-export const oldClassName = () => 'test';
+export const blankVNode = () => h('div');
 
-export const vNode = () => h('div', {
-    css: css(),
+export const vNode = (alternateCss) => h('div', {
+    css: alternateCss || css(),
     props: {
       className: oldClassName()
     }
@@ -17,27 +23,31 @@ export const vNode = () => h('div', {
 
 export const vNodeWithElm = () => {
   const node = vNode();
-  node.elm = {
-    setAttribute: jest.fn();
-  };
+  node.elm = {};
+
+  node.elm.setAttribute = jest.fn((name, value) => {
+    node.elm[name] = value;
+  });
 
   return node;
 };
 
-export const vNodeWithChildren = (quantity) => {
+export const vNodeWithChildren = (childQuantity) => {
   const node = vNode();
-  node.children = [];
+  const child = vNode();
+  child.children = [
+    vNode({
+      color: 'red'
+    }),
+    vNode()
+  ];
 
-  for (let i = 0; i < quantity; i++) {
-    node.children.push(vNode());
-  }
+  node.children = [
+    child,
+    vNode()
+  ];
 
   return node;
 };
 
-export const blankVNode = () => h('div');
-
-export const typestyleInstance = () => ({
-  getStyles: jest.fn(),
-  style: jest.fn()
-});
+export const childrenQuantity = () => 4;

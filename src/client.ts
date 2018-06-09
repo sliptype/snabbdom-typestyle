@@ -5,7 +5,7 @@ import { StylesTarget } from 'typestyle/lib/internal/typestyle';
 
 import { alternateFirstInvocation, updateVNode } from './utils';
 
-export const removeElement = (styleElementSelector: string) => {
+const removeElement = (styleElementSelector: string) => {
   const previousStyleTarget = document.querySelector(styleElementSelector);
 
   if (previousStyleTarget) {
@@ -13,7 +13,7 @@ export const removeElement = (styleElementSelector: string) => {
   }
 };
 
-export const makeDomUpdater = (styleElementSelector: string | undefined = undefined) => (oldNode: VNode, newNode: VNode): void => {
+const makeDomUpdater = (styleElementSelector: string | undefined = undefined) => (oldNode: VNode, newNode: VNode): void => {
   if (newNode.elm) {
     const elm: Element = newNode.elm as Element;
     updateVNode(newNode, (name, value) => elm.setAttribute(name, value));
