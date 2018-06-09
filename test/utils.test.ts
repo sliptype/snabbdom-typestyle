@@ -1,7 +1,7 @@
-import * as utils from '../src/utils';
-import { style } from 'typestyle';
-import { h } from 'snabbdom';
 import { VNode } from 'snabbdom/vnode';
+import { style } from 'typestyle';
+import * as utils from '../src/utils';
+import * as mocks from './mocks';
 
 jest.mock('typestyle');
 
@@ -45,30 +45,21 @@ describe('makeClassName', () => {
 
 describe('updateVNode', () => {
 
-  const css;
-  const oldClassName;
   const attributeAccessor;
 
   beforeEach(() => {
-    css = {
-      color: 'blue',
-    };
-
-    oldClassName = 'test';
-    const vNode = h('div', { css, props: { className: oldClassName} });
     attributeAccessor = jest.fn();
     utils.makeClassName = jest.fn(() => 'className');
-
-    utils.updateVNode(vNode, attributeAccessor);
+    utils.updateVNode(mocks.vNode(), attributeAccessor);
   });
 
   it('calls style with the vnode css', () => {
-    expect(style.mock.calls[0][0]).toEqual(css);
+    expect(style.mock.calls[0][0]).toEqual(mocks.css());
   });
 
   it('calls makeClassName with old classname and new classname', () => {
     const newClassName = style.mock.results[0].value;
-    expect(utils.makeClassName.mock.calls[0][0]).toBe(oldClassName);
+    expect(utils.makeClassName.mock.calls[0][0]).toBe(mocks.oldClassName());
     expect(utils.makeClassName.mock.calls[0][1]).toBe(newClassName);
   });
 

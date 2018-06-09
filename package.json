@@ -38,14 +38,9 @@
     "typescript": "^2.9.1"
   },
   "jest": {
-    "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**"
     ],
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -53,6 +48,10 @@
       "jsx",
       "json",
       "node"
-    ]
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
   }
 }
