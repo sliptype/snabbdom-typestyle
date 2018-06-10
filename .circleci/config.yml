@@ -36,6 +36,10 @@ jobs:
             npm run test -- --coverage
             ./cc-test-reporter after-build --exit-code $?
 
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
   deploy:
     <<: *defaults 
     steps:
