@@ -62,11 +62,15 @@ workflows:
           filters:
             tags: 
               only: /.*/
+            branches:
+              only: /.*/
       - test:
           requires:
             - build
           filters:
             tags: 
+              only: /.*/
+            branches:
               only: /.*/
       - deploy:
           requires:
@@ -74,3 +78,5 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+            branches:
+              ignore: /.*/
