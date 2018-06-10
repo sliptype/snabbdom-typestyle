@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     environment:
       CC_TEST_REPORTER_ID: b291228f0a903ae688099b7d801a631cf3a0929d6c0b7792010c52192ee5d50f
     docker:
@@ -33,4 +33,25 @@ jobs:
             npm run test -- --coverage
             ./cc-test-reporter after-build --exit-code $?
 
-      # publish to npm
+  deploy:
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_token" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
