@@ -1,12 +1,15 @@
 version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.9.1
+
 jobs:
   test:
+    <<: *defaults  
     environment:
       CC_TEST_REPORTER_ID: b291228f0a903ae688099b7d801a631cf3a0929d6c0b7792010c52192ee5d50f
-    docker:
-      - image: circleci/node:7.10
-    working_directory: ~/repo
-
     steps:
       - checkout
       - restore_cache:
@@ -34,6 +37,7 @@ jobs:
             ./cc-test-reporter after-build --exit-code $?
 
   deploy:
+    <<: *defaults 
     steps:
       - attach_workspace:
           at: ~/repo
