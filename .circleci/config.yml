@@ -6,39 +6,41 @@ defaults: &defaults
     - image: circleci/node:8.9.1
 
 jobs:
-  test:
+  build: 
     <<: *defaults  
-    environment:
-      CC_TEST_REPORTER_ID: b291228f0a903ae688099b7d801a631cf3a0929d6c0b7792010c52192ee5d50f
     steps:
       - checkout
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-
       - run: npm install
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run build
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
 
+  test:
+    <<: *defaults  
+    environment:
+      CC_TEST_REPORTER_ID: b291228f0a903ae688099b7d801a631cf3a0929d6c0b7792010c52192ee5d50f
+    steps:
+      - attach_workspace:
+          at: ~/repo
       - run:
           name: Setup Code Climate test-reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-        
       - run: 
           command: | 
             ./cc-test-reporter before-build
             npm run test -- --coverage
             ./cc-test-reporter after-build --exit-code $?
-
-      - persist_to_workspace:
-          root: ~/repo
-          paths: .
 
   deploy:
     <<: *defaults 
@@ -54,8 +56,9 @@ jobs:
 
 workflows:
   version: 2
-  test-deploy:
+  build-test-deploy:
     jobs:
+      - build
       - test
       - deploy:
           requires:
