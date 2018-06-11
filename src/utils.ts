@@ -3,7 +3,7 @@ import { style } from 'typestyle';
 
 import { StyledVNodeData } from './types';
 
-export const makeClassName = (oldClassName: string, newClassName: string): string => {
+const makeClassName = (oldClassName: string, newClassName: string): string => {
   return `${oldClassName} ${newClassName}`.trim();
 };
 
@@ -11,8 +11,18 @@ export const updateVNode = (node: VNode, attributeAccessor: (attribute: string, 
   const data: StyledVNodeData = node.data as StyledVNodeData;
 
   if (data.css) {
-    data.props = data.props || {};
-    attributeAccessor('class', makeClassName(data.props.className || '', style(data.css)));
+    let previousClassName;
+
+    if (data.props && data.props.className) {
+      previousClassName = data.props.className;
+    } else if (node.sel) {
+      const dotIdx = node.sel.indexOf('.');
+      if (dotIdx >= 0) {
+        previousClassName = node.sel.slice(dotIdx + 1);
+      }
+    }
+
+    attributeAccessor('class', makeClassName(previousClassName || '', style(data.css)));
   }
 };
 
