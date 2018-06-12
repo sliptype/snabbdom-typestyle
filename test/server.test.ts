@@ -2,10 +2,11 @@ import * as server from '../src/server';
 import * as mocks from './mocks';
 
 describe('serverSideCssModule', () => {
-  it('updates the class attribute', () => {
+  it('updates the class', () => {
+    const node = mocks.vNode();
     const attributes = new Map();
-    server.serverSideCssModule(mocks.vNode(), attributes);
-    expect(attributes.get('class')).toBe(mocks.hashedClassName());
+    server.serverSideCssModule(node, attributes);
+    expect(node.data.class[mocks.hashedClassName()]).toBe(true);
   });
 });
 

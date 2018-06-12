@@ -18,14 +18,14 @@ describe('makeModule', () => {
 
     it('calls style on create', () => {
       typestyle.style = jest.fn(typestyle.style);
-      module.create(mocks.vNodeWithElm(), mocks.vNodeWithElm());
+      module.create(mocks.vNode(), mocks.vNode());
       expect(typestyle.style.mock.calls.length).toBe(1);
     });
 
-    it('updates the className on create', () => {
-      const node = mocks.vNodeWithElm();
-      module.create(mocks.vNodeWithElm(), node);
-      expect(node.elm.class).toBe(mocks.hashedClassName());
+    it('updates class on create', () => {
+      const node = mocks.vNode();
+      module.create(mocks.vNode(), node);
+      expect(node.data.class[mocks.hashedClassName()]).toBe(true);
     });
 
     it('removes a given style element on create', () => {
@@ -33,7 +33,7 @@ describe('makeModule', () => {
       element.id = mocks.styleElementSelector().replace('#', '');
       document.head.appendChild(element);
 
-      module.create(mocks.vNodeWithElm(), mocks.vNodeWithElm());
+      module.create(mocks.vNode(), mocks.vNode());
       expect(document.head.contains(element)).toBe(false);
     });
   });

@@ -6,7 +6,7 @@ import { StyledVNodeData } from './types';
 import { updateVNode } from './utils';
 
 export const serverSideCssModule = (node: VNode, attributes: Map<string, number | string>): void =>
-  updateVNode(node, (name, value) => attributes.set(name, value));
+  updateVNode(node);
 
 export const collectStyles = (node: VNode): string => {
   const instance = createTypeStyle();

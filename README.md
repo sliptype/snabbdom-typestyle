@@ -35,18 +35,16 @@ Simply pass `css` to your [Snabbdom](https://github.com/snabbdom/snabbdom) virtu
 ```
 The **CssModule** is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and accepts the same arguments: Any number of `NestedCssProperties` (or `Style`, which is an alias provided by [snabbdom-typestyle](https://github.com/sklingler93/snabbdom-typestyle)).
 
-Make sure to pass the **CssModule**, along with the **Props** and **Attributes** modules, when initializing [Snabbdom](https://github.com/snabbdom/snabbdom).
+Make sure to pass the **CssModule** *before* the **ClassModule** when initializing [Snabbdom](https://github.com/snabbdom/snabbdom).
 
 ```js
   import { init } from 'snabbdom';
-  import PropsModule from 'snabbdom/modules/props';
-  import AttrsModule from 'snabbdom/modules/attributes';
   import CssModule from 'snabbdom-typestyle';
+  import ClassModule from 'snabbdom/modules/class';
 
   const modules = [
-    PropsModule,
-    AttrsModule,
-    CssModule
+    CssModule,
+    ClassModule
   ];
 
   const patch = init(modules);
@@ -66,11 +64,8 @@ import modulesForHTML from 'snabbdom-to-html/modules';
 import { h } from 'snabbdom';
 
 const modules = [
-  modulesForHTML.attributes,
-  modulesForHTML.props,
-  modulesForHTML.class,
-  modulesForHTML.style,
-  serverSideCssModule
+  serverSideCssModule,
+  modulesForHTML.class
 ];
 
 const patch = init(modules);
@@ -87,14 +82,12 @@ Then, on the client-side, pass a selector for the style element rendered by the 
 Doing this avoids duplication of the style element when the application is hydrated.
 
 ```js
-import PropsModule from 'snabbdom/modules/props';
-import AttrsModule from 'snabbdom/modules/attributes';
 import { makeClientSideCssModule } from 'snabbdom-typestyle';
+import ClassModule from 'snabbdom/modules/class';
 
 const modules = [
-  PropsModule,
-  AttrsModule,
-  makeClientSideCssModule('#styles')
+  makeClientSideCssModule('#styles'),
+  ClassModule
 ];
 ```
 

@@ -14,10 +14,7 @@ const removeElement = (styleElementSelector: string) => {
 };
 
 const makeDomUpdater = (styleElementSelector: string | undefined = undefined) => (oldNode: VNode, newNode: VNode): void => {
-  if (newNode.elm) {
-    const elm: Element = newNode.elm as Element;
-    updateVNode(newNode, (name, value) => elm.setAttribute(name, value));
-  }
+  updateVNode(newNode);
 
   if (typeof styleElementSelector !== 'undefined') {
     removeElement(styleElementSelector);
