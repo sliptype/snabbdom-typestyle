@@ -1,6 +1,6 @@
 {
   "name": "snabbdom-typestyle",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Snabbdom module for TypeStyle",
   "main": "dist/snabbdom-typestyle.js",
   "types": "dist/snabbdom-typestyle.d.ts",
