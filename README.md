@@ -33,7 +33,7 @@ Simply pass `css` to your [Snabbdom](https://github.com/snabbdom/snabbdom) virtu
       );
   }
 ```
-The **CssModule** is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and accepts the same arguments: Any number of `NestedCssProperties` (or `Style`, which is an alias provided by [snabbdom-typestyle](https://github.com/sklingler93/snabbdom-typestyle)).
+The **CssModule** is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and can be passed either a single `NestedCssProperties` or an array of `NestedCssProperties` (or `Style`, which is an alias provided by [snabbdom-typestyle](https://github.com/sklingler93/snabbdom-typestyle)).
 
 Make sure to pass the **CssModule** *before* the **ClassModule** when initializing [Snabbdom](https://github.com/snabbdom/snabbdom).
 
@@ -54,6 +54,8 @@ Or, if you are using [Cycle.js](https://github.com/cyclejs/cyclejs) pass `module
 ```js
 run(main, { DOM: makeDOMDriver('#root', { modules }) });
 ```
+
+For examples, take a look at [this fork](https://github.com/sklingler93/todomvc-cycle) of the Cycle.js Todo-MVC implementation which uses [snabbdom-typestyle](https://github.com/sklingler93/snabbdom-typestyle).
 
 ## Server-side Rendering
 To use `snabbdom-typestyle` in a server-side rendered environment, initialize [Snabbdom](https://github.com/snabbdom/snabbdom) with the `serverSideCssModule`.

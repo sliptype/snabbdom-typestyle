@@ -8,7 +8,8 @@ export const updateVNode = (vnode: VNode): void => {
 
   if (data.css) {
     data.class = data.class || {};
-    data.class[style(data.css)] = true;
+    const hashedClass = Array.isArray(data.css) ? style(...data.css) : style(data.css);
+    data.class[hashedClass] = true;
   }
 };
 
