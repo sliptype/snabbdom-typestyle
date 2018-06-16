@@ -1,7 +1,5 @@
 import { Module } from 'snabbdom/modules/module';
 import { VNode } from 'snabbdom/vnode';
-import { setStylesTarget } from 'typestyle';
-import { StylesTarget } from 'typestyle/lib/internal/typestyle';
 
 import { alternateFirstInvocation, updateVNode } from './utils';
 

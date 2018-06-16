@@ -1,15 +1,30 @@
 import { VNode } from 'snabbdom/vnode';
 import { style } from 'typestyle';
+import { TypeStyle } from 'typestyle/lib/internal/typestyle';
 
-import { StyledVNodeData } from './types';
+import { Style, StyledVNodeData } from './types';
 
-export const updateVNode = (vnode: VNode): void => {
+export const callStyleFn = (css: Style | Style[], instance: TypeStyle | undefined = undefined): string => {
+  const styleFn = instance ? instance.style : style;
+  return Array.isArray(css) ? styleFn(...css) : styleFn(css);
+};
+
+export const updateVNode = (vnode: VNode, instance: TypeStyle | undefined = undefined, setClass: boolean = true): void => {
   const data: StyledVNodeData = vnode.data as StyledVNodeData;
 
   if (data.css) {
-    data.class = data.class || {};
-    const hashedClass = Array.isArray(data.css) ? style(...data.css) : style(data.css);
-    data.class[hashedClass] = true;
+    const hashedClass = callStyleFn(data.css, instance);
+    if (setClass) {
+      data.class = data.class || {};
+      data.class[hashedClass] = true;
+    }
+  }
+};
+
+export const traverseVNode = (node: VNode, nodeMutator: (node: VNode) => void): void => {
+  nodeMutator(node);
+  if (node.children) {
+    node.children.forEach((child) => traverseVNode(child as VNode, nodeMutator));
   }
 };
 
