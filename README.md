@@ -1,6 +1,6 @@
 # Snabbdom TypeStyle
 
-[![npm](https://img.shields.io/npm/v/snabbdom-typestyle.svg)](https://www.npmjs.com/package/snabbdom-typestyle) [![CircleCI](https://img.shields.io/circleci/project/github/sklingler93/snabbdom-typestyle.svg)](https://circleci.com/gh/sklingler93/snabbdom-typestyle) [![Code Climate](https://img.shields.io/codeclimate/maintainability/sklingler93/snabbdom-typestyle.svg)](https://codeclimate.com/github/sklingler93/snabbdom-typestyle) [![Code Climate](https://img.shields.io/codeclimate/coverage/sklingler93/snabbdom-typestyle.svg)](https://codeclimate.com/github/sklingler93/snabbdom-typestyle)  [![license](https://img.shields.io/github/license/sklingler93/snabbdom-typestyle.svg)](https://github.com/sklingler93/snabbdom-typestyle/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/snabbdom-typestyle.svg)](https://www.npmjs.com/package/snabbdom-typestyle) [![CircleCI](https://img.shields.io/circleci/project/github/sliptype/snabbdom-typestyle.svg)](https://circleci.com/gh/sliptype/snabbdom-typestyle) [![Code Climate](https://img.shields.io/codeclimate/maintainability/sliptype/snabbdom-typestyle.svg)](https://codeclimate.com/github/sliptype/snabbdom-typestyle) [![Code Climate](https://img.shields.io/codeclimate/coverage/sliptype/snabbdom-typestyle.svg)](https://codeclimate.com/github/sliptype/snabbdom-typestyle)  [![license](https://img.shields.io/github/license/sliptype/snabbdom-typestyle.svg)](https://github.com/sliptype/snabbdom-typestyle/blob/master/LICENSE)
 
 Maintainable, scalable, and elegant styling with [Snabbdom](https://github.com/snabbdom/snabbdom) + [TypeStyle](https://github.com/typestyle/typestyle)
 * All the power and benefits of [TypeStyle](https://github.com/typestyle/typestyle)
@@ -33,7 +33,7 @@ Simply pass `css` to your [Snabbdom](https://github.com/snabbdom/snabbdom) virtu
       );
   }
 ```
-The **CssModule** is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and can be passed either a single `NestedCssProperties` or an array of `NestedCssProperties` (or `Style`, which is an alias provided by [snabbdom-typestyle](https://github.com/sklingler93/snabbdom-typestyle)).
+The **CssModule** is essentially a wrapper around [TypeStyle style](https://typestyle.github.io/#/core/-style-) and can be passed either a single `NestedCssProperties` or an array of `NestedCssProperties` (or `Style`, which is an alias provided by [snabbdom-typestyle](https://github.com/sliptype/snabbdom-typestyle)).
 
 Make sure to pass the **CssModule** *before* the **ClassModule** when initializing [Snabbdom](https://github.com/snabbdom/snabbdom).
 
@@ -55,7 +55,7 @@ Or, if you are using [Cycle.js](https://github.com/cyclejs/cyclejs) pass `module
 run(main, { DOM: makeDOMDriver('#root', { modules }) });
 ```
 
-For examples, take a look at [this fork](https://github.com/sklingler93/todomvc-cycle) of the Cycle.js Todo-MVC implementation which uses [snabbdom-typestyle](https://github.com/sklingler93/snabbdom-typestyle).
+For examples, take a look at [this fork](https://github.com/sliptype/todomvc-cycle) of the Cycle.js Todo-MVC implementation which uses [snabbdom-typestyle](https://github.com/sliptype/snabbdom-typestyle).
 
 ## Server-side Rendering
 To use `snabbdom-typestyle` in a server-side rendered environment, initialize [Snabbdom](https://github.com/snabbdom/snabbdom) with the `serverSideCssModule`.
